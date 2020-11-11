@@ -18,7 +18,7 @@ def live():
         return redirect(live_feed_url['manifest_url'], code=302)
     else:
         offline_url = get_live_url(os.environ.get('OFFLINE_URL'))
-        return redirect(offline_url['manifest_url'], code=301)
+        return redirect(offline_url['manifest_url'], code=302)
 
 
 if __name__ == '__main__':
