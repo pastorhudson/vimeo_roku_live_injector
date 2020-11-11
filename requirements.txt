@@ -8,6 +8,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.2
 MarkupSafe==1.1.1
 python-dotenv==0.15.0
+pytz==2020.4
 PyVimeo==1.1.0
 requests==2.24.0
 six==1.15.0
@@ -16,4 +17,3 @@ tuspy==0.2.4
 urllib3==1.25.11
 Werkzeug==1.0.1
 youtube-dl==2020.11.1.1
-gunicorn==20.0.4
