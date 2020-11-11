@@ -3,8 +3,8 @@ import os
 import requests
 
 
-def get_live_url(event_id):
-    url = f"https://vimeo.com/{event_id}"
+def get_live_url():
+    url = os.environ.get('EVENT_URL')
     ydl_opts = {}
     ydl_opts = {
         # 'outtmpl': '%(title)s.%(ext)s',
@@ -32,8 +32,8 @@ def get_vimeo_roku_feed():
     return response.json()
 
 
-def get_injected_roku_feed(event_id):
-    live_url = get_live_url(event_id)
+def get_injected_roku_feed():
+    live_url = get_live_url()
     live_object = {"id": "20201108",
                    "title": "Live Stream",
                    "shortDescription": "Worship with us each Sunday at 10:00 AM EST.",
@@ -53,7 +53,7 @@ def get_injected_roku_feed(event_id):
 
 
 if __name__ == "__main__":
-    print(get_live_url(477782549))
+    print(get_live_url())
     # print(get_injected_roku_feed(477782549))
     # https: // vimeo.com / 477782549
     pass
