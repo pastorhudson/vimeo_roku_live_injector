@@ -76,7 +76,7 @@ def get_injected_roku_feed():
                    "genres": ["faith"], "tags": ["live"], "releaseDate": "2020-11-10",
                    "content": {"dateAdded": "2020-11-10T14:14:54.431Z",
                                "captions": [],
-                               "duration": 230,
+                               "duration": 5000,
                                "videos": [{"url": "https://live.vimeocdn.com/1605114253-0x361467dc53008ed25973f55becd32ba9a6df8375/cbe7ada7-4f26-43b7-9362-eebf7c2435bd/hls.m3u8",
                                            "quality": "HD",
                                            "videoType": "HLS"}]},
