@@ -34,12 +34,12 @@ def get_vimeo_roku_feed():
 
 def get_injected_roku_feed():
     live_url = get_live_url()
-    live_object = {"id": "20201108",
+    live_object = {"id": "cbctest1",
                    "title": "Live Stream",
                    "shortDescription": "Worship with us each Sunday at 10:00 AM EST.",
                    "thumbnail": "https://s3.amazonaws.com/hproku/images/live-stream-1280.png",
-                   "genres": ["faith"], "tags": ["live"], "releaseDate": "2016-06-01",
-                   "content": {"dateAdded": "2020-02-07T14:14:54.431Z",
+                   "genres": ["faith"], "tags": ["live"], "releaseDate": "2020-11-10",
+                   "content": {"dateAdded": "2020-11-10T14:14:54.431Z",
                                "captions": [],
                                "duration": 230,
                                "videos": [{"url": live_url,
@@ -47,7 +47,7 @@ def get_injected_roku_feed():
                                            "videoType": "HLS"}]}}
 
     cur_roku_feed = get_vimeo_roku_feed()
-    cur_roku_feed['movies'].append(live_object)
+    cur_roku_feed['liveFeeds'] = [live_object]
 
     return cur_roku_feed
 
