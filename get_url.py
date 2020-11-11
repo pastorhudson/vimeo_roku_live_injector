@@ -1,6 +1,9 @@
 import youtube_dl
 import os
 import requests
+from datetime import datetime, timedelta
+from pytz import timezone
+from pytz.reference import Eastern
 
 
 def get_live_url():
@@ -37,6 +40,14 @@ def get_injected_roku_feed():
     cur_roku_feed = get_vimeo_roku_feed()
 
     if live_url:
+        est = timezone('US/Eastern')
+
+        now = datetime.now(tz=Eastern)
+        end_time = datetime.now(tz=Eastern) + timedelta(hours=2)
+        # 2020-11-08T19:04:55-05:00
+        print(now.utcoffset())
+        now = datetime.strftime(now, '%Y-%m-%dT%H:%M:%S%z')
+        end_time = datetime.strftime(end_time, '%Y-%m-%dT%H:%M:%S%z')
         live_object = {"id": "cbctest1",
                        "title": "Live Stream",
                        "shortDescription": "Worship with us each Sunday at 10:00 AM EST.",
@@ -47,7 +58,9 @@ def get_injected_roku_feed():
                                    "duration": 230,
                                    "videos": [{"url": live_url,
                                                "quality": "HD",
-                                               "videoType": "HLS"}]}}
+                                               "videoType": "HLS"}]},
+                       "validityPeriodStart": now,
+                       "validityPeriodEnd": end_time}
 
         cur_roku_feed['liveFeeds'] = [live_object]
 
@@ -55,8 +68,8 @@ def get_injected_roku_feed():
 
 
 if __name__ == "__main__":
-    print(get_live_url())
-    # print(get_injected_roku_feed(477782549))
+    # print(get_live_url())
+    print(get_injected_roku_feed())
     # https: // vimeo.com / 477782549
     pass
 
