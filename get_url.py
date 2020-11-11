@@ -55,17 +55,31 @@ def get_injected_roku_feed():
     # 2020-11-08T19:04:55-05:00 <- Expected Time format for Roku Direct Publisher
     now = datetime.strftime(now, '%Y-%m-%dT%H:%M:%S%z')
     end_time = datetime.strftime(end_time, '%Y-%m-%dT%H:%M:%S%z')
-    live_object = {"id": "cbctest1",
+    # live_object = {"id": "cbctest1",
+    #                "title": "Live Stream",
+    #                "shortDescription": "Worship with us each Sunday at 10:00 AM EST.",
+    #                "thumbnail": "https://s3.amazonaws.com/hproku/images/live-stream-1280.png",
+    #                "genres": ["faith"], "tags": ["live"], "releaseDate": "2020-11-10",
+    #                "content": {"dateAdded": "2020-11-10T14:14:54.431Z",
+    #                            "captions": [],
+    #                            "duration": 230,
+    #                            "videos": [{"url": "https://channelbuilder.church/live.m3u8",
+    #                                        "quality": "HD",
+    #                                        "videoType": "MP4"}]},
+    #                "validityPeriodStart": now,
+    #                "validityPeriodEnd": end_time}
+
+    live_object = {"id": "cbctest2",
                    "title": "Live Stream",
                    "shortDescription": "Worship with us each Sunday at 10:00 AM EST.",
-                   "thumbnail": "https://s3.amazonaws.com/hproku/images/live-stream-1280.png",
+                   "thumbnail": "https://images.squarespace-cdn.com/content/v1/5000d51de4b0392912a47ef2/1605108881444-GSZYHESIKEAT6TLX8TS2/ke17ZwdGBToddI8pDm48kNvT88LknE-K9M4pGNO0Iqd7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UbeDbaZv1s3QfpIA4TYnL5Qao8BosUKjCVjCf8TKewJIH3bqxw7fF48mhrq5Ulr0Hg/cbclive.png",
                    "genres": ["faith"], "tags": ["live"], "releaseDate": "2020-11-10",
                    "content": {"dateAdded": "2020-11-10T14:14:54.431Z",
                                "captions": [],
                                "duration": 230,
-                               "videos": [{"url": "https://channelbuilder.church/live.m3u8",
+                               "videos": [{"url": "https://live.vimeocdn.com/1605114253-0x361467dc53008ed25973f55becd32ba9a6df8375/cbe7ada7-4f26-43b7-9362-eebf7c2435bd/hls.m3u8",
                                            "quality": "HD",
-                                           "videoType": "MP4"}]},
+                                           "videoType": "HLS"}]},
                    "validityPeriodStart": now,
                    "validityPeriodEnd": end_time}
 
