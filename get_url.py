@@ -25,11 +25,15 @@ def get_live_url(url=None):
             formats = meta.get('formats', [meta])
             tbr = 1
             best = None
-            for f in formats:
-                if 'audio' not in f['format_id'] and f['tbr']:
-                    if int(f['tbr']) > tbr:
-                        best = f
-                        tbr = int(f['tbr'])
+            try:
+                for f in formats:
+                    if 'audio' not in f['format_id'] and f['tbr'] and 'dash' not in f['format_id']:
+                        if int(f['tbr']) > tbr:
+                            best = f
+                            tbr = int(f['tbr'])
+            except KeyError:
+                return None
+
             return best
 
     except youtube_dl.utils.DownloadError:
@@ -75,7 +79,7 @@ def get_injected_roku_feed():
                    "content": {"dateAdded": "2020-11-11T14:14:54.431Z",
                                "captions": [],
                                "duration": 5000,
-                               "videos": [{"url": "https://25b9273ec647.ngrok.io/live.m3u8",
+                               "videos": [{"url": "https://roku.cbcfamily.church/live.m3u8",
                                            "quality": "HD",
                                            "videoType": "HLS"}]},
                    "validityPeriodStart": now,
@@ -117,7 +121,9 @@ def get_offline_content():
 
 if __name__ == "__main__":
     # print(get_live_url('https://vimeo.com/478125860'))
-    print(get_live_url('https://vimeo.com/478184394'))
+    offline_url = get_live_url(os.environ.get('OFFLINE_URL'))
+    print(offline_url)
+    # print(get_live_url('https://vimeo.com/478184394'))
 
     # print(get_injected_roku_feed())
     # https: // vimeo.com / 477782549
