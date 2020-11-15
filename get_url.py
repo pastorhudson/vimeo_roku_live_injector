@@ -86,6 +86,7 @@ def get_injected_roku_feed():
                    "validityPeriodEnd": end_time}
 
     cur_roku_feed['liveFeeds'] = [live_object]
+    cur_roku_feed['lastUpdated'] = now
 
     return cur_roku_feed
 
@@ -120,9 +121,9 @@ def get_offline_content():
 
 
 if __name__ == "__main__":
-    # print(get_live_url('https://vimeo.com/478125860'))
-    offline_url = get_live_url(os.environ.get('OFFLINE_URL'))
-    print(offline_url)
+    print(get_live_url('https://vimeo.com/478222816'))
+    # offline_url = get_live_url(os.environ.get('OFFLINE_URL'))
+    # print(offline_url)
     # print(get_live_url('https://vimeo.com/478184394'))
 
     # print(get_injected_roku_feed())
