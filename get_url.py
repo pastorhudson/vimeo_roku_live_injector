@@ -55,6 +55,7 @@ def get_injected_roku_feed():
     now = datetime.now(tz=Eastern)
     end_time = datetime.now(tz=Eastern) + timedelta(hours=24)
     # 2020-11-08T19:04:55-05:00 <- Expected Time format for Roku Direct Publisher
+    release_now = datetime.strftime(now, '%Y-%m-%d')
     now = datetime.strftime(now, '%Y-%m-%dT%H:%M:%S%z')
     end_time = datetime.strftime(end_time, '%Y-%m-%dT%H:%M:%S%z')
     # live_object = {"id": "cbctest1",
@@ -75,7 +76,8 @@ def get_injected_roku_feed():
                    "title": "Live Stream",
                    "shortDescription": "Worship with us each Sunday at 10:00 AM EST.",
                    "thumbnail": "https://images.squarespace-cdn.com/content/v1/5000d51de4b0392912a47ef2/1605108881444-GSZYHESIKEAT6TLX8TS2/ke17ZwdGBToddI8pDm48kNvT88LknE-K9M4pGNO0Iqd7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UbeDbaZv1s3QfpIA4TYnL5Qao8BosUKjCVjCf8TKewJIH3bqxw7fF48mhrq5Ulr0Hg/cbclive.png",
-                   "genres": ["faith"], "tags": ["live"], "releaseDate": "2020-11-10",
+                   "genres": ["faith"], "tags": ["live"],
+                   "releaseDate": {release_now},
                    "content": {"dateAdded": {now},
                                "captions": [],
                                "duration": 5000,
