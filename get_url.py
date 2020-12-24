@@ -58,6 +58,7 @@ def get_injected_roku_feed():
     release_now = datetime.strftime(now, '%Y-%m-%d')
     now = datetime.strftime(now, '%Y-%m-%dT%H:%M:%S%z')
     end_time = datetime.strftime(end_time, '%Y-%m-%dT%H:%M:%S%z')
+    print(release_now)
     # live_object = {"id": "cbctest1",
     #                "title": "Live Stream",
     #                "shortDescription": "Worship with us each Sunday at 10:00 AM EST.",
@@ -77,8 +78,8 @@ def get_injected_roku_feed():
                    "shortDescription": "Worship with us each Sunday at 10:00 AM EST.",
                    "thumbnail": "https://images.squarespace-cdn.com/content/v1/5000d51de4b0392912a47ef2/1605108881444-GSZYHESIKEAT6TLX8TS2/ke17ZwdGBToddI8pDm48kNvT88LknE-K9M4pGNO0Iqd7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UbeDbaZv1s3QfpIA4TYnL5Qao8BosUKjCVjCf8TKewJIH3bqxw7fF48mhrq5Ulr0Hg/cbclive.png",
                    "genres": ["faith"], "tags": ["live"],
-                   "releaseDate": {release_now},
-                   "content": {"dateAdded": {now},
+                   "releaseDate": release_now,
+                   "content": {"dateAdded": now,
                                "captions": [],
                                "duration": 5000,
                                "videos": [{"url": "https://roku.cbcfamily.church/live.m3u8",
@@ -105,7 +106,7 @@ def get_offline_content():
         "title": "Live Stream Offline",
         "shortDescription": "Find hope every Sunday at 10am with Calvary Baptist Church.",
         "thumbnail": "https://i.vimeocdn.com/video/992886664_800x450.png",
-        "releaseDate": {now},
+        "releaseDate": now,
         "genres": [
             "faith"
         ],
@@ -113,7 +114,7 @@ def get_offline_content():
             "faith"
         ],
         "content": {
-            "dateAdded": {now},
+            "dateAdded": now,
             "duration": 24,
             "videos": [
                 {
@@ -129,11 +130,11 @@ def get_offline_content():
 
 
 if __name__ == "__main__":
-    print(get_live_url('https://vimeo.com/494519730'))
+    # print(get_live_url('https://vimeo.com/494519730'))
     # offline_url = get_live_url(os.environ.get('OFFLINE_URL'))
     # print(offline_url)
     # print(get_live_url('https://vimeo.com/478184394'))
 
-    # print(get_injected_roku_feed())
+    print(get_injected_roku_feed())
     # https: // vimeo.com / 477782549
     pass
