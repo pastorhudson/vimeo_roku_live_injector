@@ -76,7 +76,7 @@ def get_injected_roku_feed():
                    "shortDescription": "Worship with us each Sunday at 10:00 AM EST.",
                    "thumbnail": "https://images.squarespace-cdn.com/content/v1/5000d51de4b0392912a47ef2/1605108881444-GSZYHESIKEAT6TLX8TS2/ke17ZwdGBToddI8pDm48kNvT88LknE-K9M4pGNO0Iqd7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UbeDbaZv1s3QfpIA4TYnL5Qao8BosUKjCVjCf8TKewJIH3bqxw7fF48mhrq5Ulr0Hg/cbclive.png",
                    "genres": ["faith"], "tags": ["live"], "releaseDate": "2020-11-10",
-                   "content": {"dateAdded": "2020-12-23T14:14:54.431Z",
+                   "content": {"dateAdded": {now},
                                "captions": [],
                                "duration": 5000,
                                "videos": [{"url": "https://roku.cbcfamily.church/live.m3u8",
@@ -92,12 +92,18 @@ def get_injected_roku_feed():
 
 
 def get_offline_content():
+    est = timezone('US/Eastern')
+    now = datetime.now(tz=Eastern)
+    end_time = datetime.now(tz=Eastern) + timedelta(hours=24)
+    # 2020-11-08T19:04:55-05:00 <- Expected Time format for Roku Direct Publisher
+    now = datetime.strftime(now, '%Y-%m-%dT%H:%M:%S%z')
+    end_time = datetime.strftime(end_time, '%Y-%m-%dT%H:%M:%S%z')
     offline_content = {
         "id": "478125860",
         "title": "Live Stream Offline",
         "shortDescription": "Find hope every Sunday at 10am with Calvary Baptist Church.",
         "thumbnail": "https://i.vimeocdn.com/video/992886664_800x450.png",
-        "releaseDate": "2020-12-23T12:35:03-05:00",
+        "releaseDate": {now},
         "genres": [
             "faith"
         ],
@@ -105,7 +111,7 @@ def get_offline_content():
             "faith"
         ],
         "content": {
-            "dateAdded": "2020-12-23T13:22:51-05:00",
+            "dateAdded": {now},
             "duration": 24,
             "videos": [
                 {
