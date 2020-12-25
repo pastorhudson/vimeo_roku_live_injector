@@ -130,11 +130,11 @@ def get_offline_content():
 
 
 if __name__ == "__main__":
-    # print(get_live_url('https://vimeo.com/494519730'))
+    print(get_live_url('https://vimeo.com/494519730'))
     # offline_url = get_live_url(os.environ.get('OFFLINE_URL'))
     # print(offline_url)
     # print(get_live_url('https://vimeo.com/478184394'))
 
-    print(get_injected_roku_feed())
+    # print(get_injected_roku_feed())
     # https: // vimeo.com / 477782549
     pass
