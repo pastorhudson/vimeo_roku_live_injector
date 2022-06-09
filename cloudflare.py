@@ -50,7 +50,11 @@ def get_live_stream(type):
     for video in videos['result']['videos']:
         if video['status']['state'] == 'live-inprogress':
             return video['playback'][type]
-    return 'https://cloudflarestream.com/5a18891c41abda848b3f14197c15374b/manifest/video.mpd'
+    if type == 'dash':
+        return 'https://cloudflarestream.com/5a18891c41abda848b3f14197c15374b/manifest/video.mpd'
+    if type == 'hls':
+        return 'https://cloudflarestream.com/5a18891c41abda848b3f14197c15374b/manifest/video.m3u8'
+
 
 
 def get_all_videos():
