@@ -91,13 +91,15 @@ def get_injected_roku_feed():
                    "content": {"dateAdded": now,
                                "captions": [],
                                "duration": 5000,
-                               "videos": [{"url": "https://roku.cbcfamily.church/live.m3u8",
-                                           "quality": "HD",
-                                           "videoType": "HLS"},
-                                          {"url": "https://roku.cbcfamily.church/live.mpd",
-                                           "quality": "HD",
-                                           "videoType": "DASH"}
-                                          ]},
+                               "videos": [
+                                   # {"url": "https://roku.cbcfamily.church/live.m3u8",
+                                   #  "quality": "HD",
+                                   #  "videoType": "HLS"},
+                                   {"url": "https://roku.cbcfamily.church/live.mpd",
+                                    "quality": "HD",
+                                    "videoType": "DASH"}
+                               ]
+                               },
 
                    "validityPeriodStart": now,
                    "validityPeriodEnd": end_time}
