@@ -4,6 +4,15 @@ import requests
 from datetime import datetime, timedelta
 from pytz import timezone
 from pytz.reference import Eastern
+from cloudflare import generate_cloudflare_roku_feed
+
+
+def get_cloudflare_url(url=None):
+    if not url:
+        url = os.environ.get('EVENT_URL')
+    else:
+        url = url
+        print(url)
 
 
 def get_live_url(url=None):
@@ -48,7 +57,7 @@ def get_vimeo_roku_feed():
 
 def get_injected_roku_feed():
     # live_blob = get_live_url()
-    cur_roku_feed = get_vimeo_roku_feed()
+    cur_roku_feed = generate_cloudflare_roku_feed()
 
     # if live_blob:
     est = timezone('US/Eastern')
