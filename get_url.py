@@ -96,7 +96,7 @@ def get_injected_roku_feed():
                                    #  "quality": "HD",
                                    #  "videoType": "HLS"},
                                    {"url": "https://roku.cbcfamily.church/live.mpd",
-                                    "quality": "HD",
+                                    "quality": "FHD",
                                     "videoType": "DASH"}
                                ]
                                },
