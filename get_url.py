@@ -15,7 +15,7 @@ def get_cloudflare_url(url=None):
         print(url)
 
 
-def get_live_url(url=None):
+def get_vimeo_live_url(url=None):
     if not url:
         url = os.environ.get('EVENT_URL')
     else:
@@ -93,7 +93,12 @@ def get_injected_roku_feed():
                                "duration": 5000,
                                "videos": [{"url": "https://roku.cbcfamily.church/live.m3u8",
                                            "quality": "HD",
-                                           "videoType": "HLS"}]},
+                                           "videoType": "HLS"},
+                                          {"url": "https://roku.cbcfamily.church/live.mpd",
+                                           "quality": "HD",
+                                           "videoType": "DASH"}
+                                          ]},
+
                    "validityPeriodStart": now,
                    "validityPeriodEnd": end_time}
 

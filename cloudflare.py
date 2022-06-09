@@ -45,8 +45,12 @@ def upload_by_link(url: str, title: str):
     pprint(response.json())
 
 
-def get_live_streams():
-    pass
+def get_live_stream(type):
+    videos = get_all_videos()
+    for video in videos['result']['videos']:
+        if video['status']['state'] == 'live-inprogress':
+            return video['playback'][type]
+    return 'https://cloudflarestream.com/5a18891c41abda848b3f14197c15374b/manifest/video.mpd'
 
 
 def get_all_videos():
@@ -131,8 +135,8 @@ def generate_cloudflare_roku_feed():
 
 if __name__ == "__main__":
     url = 'https://player.vimeo.com/progressive_redirect/download/714961469/container/1a96868c-8e53-4db8-ace0-a5e10c13ba2c/194cc380/every_day_-_week_5.mp4%20%281080p%29.mp4?expires=1654789709&loc=external&signature=edc0ac34553d41afa2c365e28d652df4c625cdf9f7f617ffb36f63e6ced1ea34'
-    # pprint(get_all_videos())
+    pprint(get_live_stream())
     # good_token = verify_token(os.getenv('CLOUDFLARE_TOKEN'))
     # print(good_token)
 
-    pprint(generate_cloudflare_roku_feed())
+    # pprint(generate_cloudflare_roku_feed())
