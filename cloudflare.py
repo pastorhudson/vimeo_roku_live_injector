@@ -105,7 +105,7 @@ def parse_video(video):
                     ],
                     "content": {
                         "dateAdded": stamp,
-                        "duration": video['duration'],
+                        "duration": int(video['duration']),
                         "videos": [
                             {
                                 "url": video['playback']['dash'],
@@ -113,7 +113,8 @@ def parse_video(video):
                                 "videoType": "DASH",
                                 "bitrate": None
                             }
-                        ]
+                        ],
+                        "language": "en-US",
                     }
                 },
     return roku_data[0]
