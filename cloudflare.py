@@ -50,6 +50,7 @@ def get_live_stream(type):
     for video in videos['result']['videos']:
         if video['status']['state'] == 'live-inprogress':
             return video['playback'][type]
+        """https://videodelivery.net/76d46e1adafe66552d3eb93a4de1376b/manifest/video.m3u8"""
     if type == 'dash':
         return 'https://cloudflarestream.com/5a18891c41abda848b3f14197c15374b/manifest/video.mpd'
     if type == 'hls':
@@ -93,7 +94,7 @@ def parse_video(video):
                     "id": video['uid'],
                     "title": video['meta']['name'],
                     "shortDescription": video['meta']['name'],
-                    "thumbnail": video['thumbnail'],
+                    "thumbnail": video['thumbnail'] + "?height=450",
                     # "releaseDate": "2020-11-01T11:11:25-05:00",
                     "releaseDate": stamp,
 
@@ -139,7 +140,7 @@ def generate_cloudflare_roku_feed():
 
 if __name__ == "__main__":
     url = 'https://player.vimeo.com/progressive_redirect/download/714961469/container/1a96868c-8e53-4db8-ace0-a5e10c13ba2c/194cc380/every_day_-_week_5.mp4%20%281080p%29.mp4?expires=1654789709&loc=external&signature=edc0ac34553d41afa2c365e28d652df4c625cdf9f7f617ffb36f63e6ced1ea34'
-    # pprint(get_live_stream('dash'))
+    pprint(get_live_stream('dash'))
     # good_token = verify_token(os.getenv('CLOUDFLARE_TOKEN'))
     # print(good_token)
 
