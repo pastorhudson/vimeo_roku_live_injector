@@ -1,5 +1,6 @@
 from flask import Flask, redirect
 from get_url import get_injected_roku_feed, get_vimeo_live_url, get_offline_content
+from cloudflare import get_xml_feed
 from cloudflare import get_live_stream
 import dotenv
 import os
@@ -9,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def channel_feed():
-    return get_injected_roku_feed()
+    return get_xml_feed()
 
 
 @app.route('/live.m3u8')

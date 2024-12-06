@@ -68,20 +68,6 @@ def get_injected_roku_feed():
     release_now = datetime.strftime(now, '%Y-%m-%d')
     now = datetime.strftime(now, '%Y-%m-%dT%H:%M:%S%z')
     end_time = datetime.strftime(end_time, '%Y-%m-%dT%H:%M:%S%z')
-    print(release_now)
-    # live_object = {"id": "cbctest1",
-    #                "title": "Live Stream",
-    #                "shortDescription": "Worship with us each Sunday at 10:00 AM EST.",
-    #                "thumbnail": "https://s3.amazonaws.com/hproku/images/live-stream-1280.png",
-    #                "genres": ["faith"], "tags": ["live"], "releaseDate": "2020-11-10",
-    #                "content": {"dateAdded": "2020-11-10T14:14:54.431Z",
-    #                            "captions": [],
-    #                            "duration": 230,
-    #                            "videos": [{"url": "https://channelbuilder.church/live.m3u8",
-    #                                        "quality": "HD",
-    #                                        "videoType": "MP4"}]},
-    #                "validityPeriodStart": now,
-    #                "validityPeriodEnd": end_time}
 
     live_object = {"id": "cbctest3",
                    "title": "Live Stream",
