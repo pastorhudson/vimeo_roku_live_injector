@@ -150,8 +150,8 @@ def get_categories():
 
     # Technology category
     tech = SubElement(root, 'category')
-    tech.set('title', 'Technology')
-    tech.set('description', 'TED Talks on Technology')
+    tech.set('title', 'Live')
+    tech.set('description', 'Live Service')
     tech.set('sd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Technology.png')
     tech.set('hd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Technology.png')
 
@@ -160,44 +160,44 @@ def get_categories():
     tech_mind.set('description', '')
     tech_mind.set('feed', 'https://roku.cbcfamily.church/feed.xml')
 
-    tech_global = SubElement(tech, 'categoryLeaf')
-    tech_global.set('title', 'Global Issues')
-    tech_global.set('description', '')
-    tech_global.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/globalissues.xml')
-
-    # Entertainment category
-    ent = SubElement(root, 'category')
-    ent.set('title', 'Entertainment')
-    ent.set('description', 'TED Talks on Entertainment')
-    ent.set('sd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Entertainment.png')
-    ent.set('hd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Entertainment.png')
-
-    ent_music = SubElement(ent, 'categoryLeaf')
-    ent_music.set('title', 'Music')
-    ent_music.set('description', '')
-    ent_music.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/music.xml')
-
-    ent_insp = SubElement(ent, 'categoryLeaf')
-    ent_insp.set('title', 'Inspiration')
-    ent_insp.set('description', '')
-    ent_insp.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/inspiration.xml')
-
-    # Design category
-    design = SubElement(root, 'category')
-    design.set('title', 'Design')
-    design.set('description', 'TED Talks on Design')
-    design.set('sd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Design.png')
-    design.set('hd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Design.png')
-
-    design_create = SubElement(design, 'categoryLeaf')
-    design_create.set('title', 'Creativity')
-    design_create.set('description', '')
-    design_create.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/creativity.xml')
-
-    design_leaf = SubElement(design, 'categoryLeaf')
-    design_leaf.set('title', 'Design')
-    design_leaf.set('description', '')
-    design_leaf.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/design.xml')
+    # tech_global = SubElement(tech, 'categoryLeaf')
+    # tech_global.set('title', 'Global Issues')
+    # tech_global.set('description', '')
+    # tech_global.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/globalissues.xml')
+    #
+    # # Entertainment category
+    # ent = SubElement(root, 'category')
+    # ent.set('title', 'Entertainment')
+    # ent.set('description', 'TED Talks on Entertainment')
+    # ent.set('sd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Entertainment.png')
+    # ent.set('hd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Entertainment.png')
+    #
+    # ent_music = SubElement(ent, 'categoryLeaf')
+    # ent_music.set('title', 'Music')
+    # ent_music.set('description', '')
+    # ent_music.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/music.xml')
+    #
+    # ent_insp = SubElement(ent, 'categoryLeaf')
+    # ent_insp.set('title', 'Inspiration')
+    # ent_insp.set('description', '')
+    # ent_insp.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/inspiration.xml')
+    #
+    # # Design category
+    # design = SubElement(root, 'category')
+    # design.set('title', 'Design')
+    # design.set('description', 'TED Talks on Design')
+    # design.set('sd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Design.png')
+    # design.set('hd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Design.png')
+    #
+    # design_create = SubElement(design, 'categoryLeaf')
+    # design_create.set('title', 'Creativity')
+    # design_create.set('description', '')
+    # design_create.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/creativity.xml')
+    #
+    # design_leaf = SubElement(design, 'categoryLeaf')
+    # design_leaf.set('title', 'Design')
+    # design_leaf.set('description', '')
+    # design_leaf.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/design.xml')
 
     # Convert to string with pretty printing
     xml_str = minidom.parseString(tostring(root, encoding='unicode')).toprettyxml(indent='  ')
