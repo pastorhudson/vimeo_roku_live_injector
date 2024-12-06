@@ -133,29 +133,78 @@ def get_offline_content():
 
 
 def get_categories():
-    xml = """
-    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<categories>
+    # Create the root element
+    root = Element('categories')
 
-	  <!-- banner_ad: optional element which displays an at the top level category screen -->
-	  <banner_ad sd_img="https://devtools.web.roku.com/videoplayer/images/missing.png" hd_img="https://devtools.web.roku.com/videoplayer/images/missing.png"/>
-	  
-	<category title="Technology" description="TED Talks on Technology" sd_img="https://devtools.web.roku.com/videoplayer/images/TED_Technology.png" hd_img="https://devtools.web.roku.com/videoplayer/images/TED_Technology.png">
-		<categoryLeaf title="The Mind" description="" feed="https://devtools.web.roku.com/videoplayer/xml/themind.xml"/>
-		<categoryLeaf title="Global Issues" description="" feed="https://devtools.web.roku.com/videoplayer/xml/globalissues.xml" />
-	</category>
+    # Add XML declaration processing instruction
 
-	<category title="Services" description="Previous Services" sd_img="https://devtools.web.roku.com/videoplayer/images/TED_Entertainment.png" hd_img="https://devtools.web.roku.com/videoplayer/images/TED_Entertainment.png">
-		<categoryLeaf title="Music" description="" feed="https://roku.cbcfamily.church/feed.xml" />
-	</category>
+    # Add banner_ad element with comment
+    banner_comment = Comment(' banner_ad: optional element which displays an at the top level category screen ')
+    root.append(banner_comment)
 
-	<category title="Design" description="TED Talks on Design" sd_img="https://devtools.web.roku.com/videoplayer/images/TED_Design.png" hd_img="https://devtools.web.roku.com/videoplayer/images/TED_Design.png">
-		<categoryLeaf title="Creativity" description="" feed="https://devtools.web.roku.com/videoplayer/xml/creativity.xml"/>
-		<categoryLeaf title="Design" description="" feed="https://devtools.web.roku.com/videoplayer/xml/design.xml" />
-	</category>
+    banner = SubElement(root, 'banner_ad')
+    banner.set('sd_img', 'https://devtools.web.roku.com/videoplayer/images/missing.png')
+    banner.set('hd_img', 'https://devtools.web.roku.com/videoplayer/images/missing.png')
 
- </categories>
-"""
+    # Technology category
+    tech = SubElement(root, 'category')
+    tech.set('title', 'Technology')
+    tech.set('description', 'TED Talks on Technology')
+    tech.set('sd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Technology.png')
+    tech.set('hd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Technology.png')
+
+    tech_mind = SubElement(tech, 'categoryLeaf')
+    tech_mind.set('title', 'Services')
+    tech_mind.set('description', '')
+    tech_mind.set('feed', 'https://roku.cbcfamily.church/feed.xml')
+
+    tech_global = SubElement(tech, 'categoryLeaf')
+    tech_global.set('title', 'Global Issues')
+    tech_global.set('description', '')
+    tech_global.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/globalissues.xml')
+
+    # Entertainment category
+    ent = SubElement(root, 'category')
+    ent.set('title', 'Entertainment')
+    ent.set('description', 'TED Talks on Entertainment')
+    ent.set('sd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Entertainment.png')
+    ent.set('hd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Entertainment.png')
+
+    ent_music = SubElement(ent, 'categoryLeaf')
+    ent_music.set('title', 'Music')
+    ent_music.set('description', '')
+    ent_music.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/music.xml')
+
+    ent_insp = SubElement(ent, 'categoryLeaf')
+    ent_insp.set('title', 'Inspiration')
+    ent_insp.set('description', '')
+    ent_insp.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/inspiration.xml')
+
+    # Design category
+    design = SubElement(root, 'category')
+    design.set('title', 'Design')
+    design.set('description', 'TED Talks on Design')
+    design.set('sd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Design.png')
+    design.set('hd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Design.png')
+
+    design_create = SubElement(design, 'categoryLeaf')
+    design_create.set('title', 'Creativity')
+    design_create.set('description', '')
+    design_create.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/creativity.xml')
+
+    design_leaf = SubElement(design, 'categoryLeaf')
+    design_leaf.set('title', 'Design')
+    design_leaf.set('description', '')
+    design_leaf.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/design.xml')
+
+    # Convert to string with pretty printing
+    xml_str = minidom.parseString(tostring(root, encoding='unicode')).toprettyxml(indent='  ')
+
+    # Add XML declaration since toprettyxml() doesn't include it
+    if not xml_str.startswith('<?xml'):
+        xml_str = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n' + xml_str
+
+    return xml_str
 
 
 if __name__ == "__main__":
