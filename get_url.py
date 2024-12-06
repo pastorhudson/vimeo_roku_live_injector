@@ -132,6 +132,32 @@ def get_offline_content():
     return "https://143vod-adaptive.akamaized.net/exp=1605126373~acl=%2Fea26be3b-4680-4ce4-b24b-d5df9cb78c7e%2F%2A~hmac=a1f84823cadb5590d868cf88ec4250e2bb8b88a841b2dff47c8a606c187e569d/ea26be3b-4680-4ce4-b24b-d5df9cb78c7e/video/f2940ff3/playlist.m3u8"
 
 
+def get_categories():
+    xml = """
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<categories>
+
+	  <!-- banner_ad: optional element which displays an at the top level category screen -->
+	  <banner_ad sd_img="https://devtools.web.roku.com/videoplayer/images/missing.png" hd_img="https://devtools.web.roku.com/videoplayer/images/missing.png"/>
+	  
+	<category title="Technology" description="TED Talks on Technology" sd_img="https://devtools.web.roku.com/videoplayer/images/TED_Technology.png" hd_img="https://devtools.web.roku.com/videoplayer/images/TED_Technology.png">
+		<categoryLeaf title="The Mind" description="" feed="https://devtools.web.roku.com/videoplayer/xml/themind.xml"/>
+		<categoryLeaf title="Global Issues" description="" feed="https://devtools.web.roku.com/videoplayer/xml/globalissues.xml" />
+	</category>
+
+	<category title="Services" description="Previous Services" sd_img="https://devtools.web.roku.com/videoplayer/images/TED_Entertainment.png" hd_img="https://devtools.web.roku.com/videoplayer/images/TED_Entertainment.png">
+		<categoryLeaf title="Music" description="" feed="https://roku.cbcfamily.church/feed.xml" />
+	</category>
+
+	<category title="Design" description="TED Talks on Design" sd_img="https://devtools.web.roku.com/videoplayer/images/TED_Design.png" hd_img="https://devtools.web.roku.com/videoplayer/images/TED_Design.png">
+		<categoryLeaf title="Creativity" description="" feed="https://devtools.web.roku.com/videoplayer/xml/creativity.xml"/>
+		<categoryLeaf title="Design" description="" feed="https://devtools.web.roku.com/videoplayer/xml/design.xml" />
+	</category>
+
+ </categories>
+"""
+
+
 if __name__ == "__main__":
     # print(get_vimeo_roku_feed())
     # print(get_live_url('https://vimeo.com/494519730'))

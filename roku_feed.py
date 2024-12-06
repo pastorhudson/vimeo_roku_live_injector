@@ -1,5 +1,5 @@
 from flask import Flask, redirect, Response
-from get_url import get_injected_roku_feed, get_vimeo_live_url, get_offline_content
+from get_url import get_injected_roku_feed, get_vimeo_live_url, get_offline_content, get_categories
 from cloudflare import get_xml_feed
 from cloudflare import get_live_stream
 import dotenv
@@ -20,6 +20,17 @@ def home():
         }
     )
 
+
+@app.route('/categories.xml')
+def categories_feed():
+    return Response(
+        get_categories(),
+        mimetype='application/xml',
+        headers={
+            'Content-Type': 'application/xml; charset=utf-8',
+            'Cache-Control': 'no-cache'
+        }
+    )
 
 @app.route('/feed.xml')
 def channel_feed():
