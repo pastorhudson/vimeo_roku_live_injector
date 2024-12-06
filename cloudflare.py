@@ -58,13 +58,14 @@ def get_live_stream(type):
 
 
 def get_all_videos():
+
     token = os.getenv('CLOUDFLARE_TOKEN')
     headers = {
         'Authorization': f"Bearer {token}",
         'Content-Type': 'application/json',
     }
 
-    response = requests.get(f'https://api.cloudflare.com/client/v4/accounts/{os.getenv("CLOUDFLARE_ACCOUNT")}/stream?after=2014-01-02T02:20:00Z&before=2023-01-02T02:20:00Z&include_counts=true', headers=headers)
+    response = requests.get(f'https://api.cloudflare.com/client/v4/accounts/{os.getenv("CLOUDFLARE_ACCOUNT")}/stream?include_counts=true', headers=headers)
 
     return response.json()
 
@@ -139,9 +140,11 @@ def generate_cloudflare_roku_feed():
 
 
 if __name__ == "__main__":
-    url = 'https://player.vimeo.com/progressive_redirect/download/714961469/container/1a96868c-8e53-4db8-ace0-a5e10c13ba2c/194cc380/every_day_-_week_5.mp4%20%281080p%29.mp4?expires=1654789709&loc=external&signature=edc0ac34553d41afa2c365e28d652df4c625cdf9f7f617ffb36f63e6ced1ea34'
-    pprint(get_live_stream('dash'))
+    # url = 'https://player.vimeo.com/progressive_redirect/download/714961469/container/1a96868c-8e53-4db8-ace0-a5e10c13ba2c/194cc380/every_day_-_week_5.mp4%20%281080p%29.mp4?expires=1654789709&loc=external&signature=edc0ac34553d41afa2c365e28d652df4c625cdf9f7f617ffb36f63e6ced1ea34'
+    # pprint(get_live_stream('dash'))
     # good_token = verify_token(os.getenv('CLOUDFLARE_TOKEN'))
     # print(good_token)
-
+    # pprint(get_all_videos())
     pprint(generate_cloudflare_roku_feed())
+    # clean_names()
+    # pprint(generate_cloudflare_roku_feed())
