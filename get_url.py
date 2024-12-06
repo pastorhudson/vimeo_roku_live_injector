@@ -6,6 +6,8 @@ from pytz import timezone
 # from pytz.reference import Eastern
 from cloudflare import generate_cloudflare_roku_feed
 from pytz.reference import Eastern
+from xml.etree.ElementTree import Element, SubElement, Comment, tostring
+from xml.dom import minidom
 
 
 def get_cloudflare_url(url=None):
@@ -213,7 +215,7 @@ if __name__ == "__main__":
     # offline_url = get_live_url(os.environ.get('OFFLINE_URL'))
     # print(offline_url)
     # print(get_live_url('https://vimeo.com/478184394'))
-    print(get_cloudflare_url())
+    print(get_categories())
 
     # print(get_injected_roku_feed())
     # https: // vimeo.com / 477782549
