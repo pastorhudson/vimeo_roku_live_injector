@@ -4,6 +4,7 @@ from cloudflare import get_xml_feed
 from cloudflare import get_live_stream
 import dotenv
 import os
+
 dotenv.load_dotenv(dotenv_path='secrets.env')
 app = Flask(__name__)
 
@@ -19,6 +20,7 @@ def channel_feed():
         }
     )
 
+
 @app.route('/feed.xml')
 def channel_feed():
     return Response(
@@ -29,6 +31,7 @@ def channel_feed():
             'Cache-Control': 'no-cache'
         }
     )
+
 
 @app.route('/live.m3u8')
 def hls_live():
@@ -52,4 +55,3 @@ def dash_live():
 
 if __name__ == '__main__':
     app.run()
-
