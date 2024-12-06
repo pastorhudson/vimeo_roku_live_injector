@@ -19,7 +19,16 @@ def channel_feed():
         }
     )
 
-
+@app.route('/feed.xml')
+def channel_feed():
+    return Response(
+        get_xml_feed(),
+        mimetype='application/xml',
+        headers={
+            'Content-Type': 'application/xml; charset=utf-8',
+            'Cache-Control': 'no-cache'
+        }
+    )
 
 @app.route('/live.m3u8')
 def hls_live():
