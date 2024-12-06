@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def channel_feed():
+def home():
     return Response(
         get_xml_feed(),
         mimetype='application/xml',
