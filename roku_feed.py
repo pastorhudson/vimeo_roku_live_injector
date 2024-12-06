@@ -1,4 +1,4 @@
-from flask import Flask, redirect
+from flask import Flask, redirect, Response
 from get_url import get_injected_roku_feed, get_vimeo_live_url, get_offline_content
 from cloudflare import get_xml_feed
 from cloudflare import get_live_stream
@@ -10,7 +10,15 @@ app = Flask(__name__)
 
 @app.route('/')
 def channel_feed():
-    return get_xml_feed()
+    return Response(
+        get_xml_feed(),
+        mimetype='application/xml',
+        headers={
+            'Content-Type': 'application/xml; charset=utf-8',
+            'Cache-Control': 'no-cache'
+        }
+    )
+
 
 
 @app.route('/live.m3u8')
