@@ -1,47 +1,15 @@
-from flask import Flask, redirect, Response
-from get_url import get_injected_roku_feed, get_vimeo_live_url, get_offline_content, get_categories
-from cloudflare import get_xml_feed
+from flask import Flask, redirect
+from get_url import get_injected_roku_feed, get_vimeo_live_url, get_offline_content
 from cloudflare import get_live_stream
 import dotenv
 import os
-
 dotenv.load_dotenv(dotenv_path='secrets.env')
 app = Flask(__name__)
 
 
 @app.route('/')
-def home():
-    return Response(
-        get_xml_feed(),
-        mimetype='application/xml',
-        headers={
-            'Content-Type': 'application/xml; charset=utf-8',
-            'Cache-Control': 'no-cache'
-        }
-    )
-
-
-@app.route('/categories.xml')
-def categories_feed():
-    return Response(
-        get_categories(),
-        mimetype='application/xml',
-        headers={
-            'Content-Type': 'application/xml; charset=utf-8',
-            'Cache-Control': 'no-cache'
-        }
-    )
-
-@app.route('/feed.xml')
 def channel_feed():
-    return Response(
-        get_xml_feed(),
-        mimetype='application/xml',
-        headers={
-            'Content-Type': 'application/xml; charset=utf-8',
-            'Cache-Control': 'no-cache'
-        }
-    )
+    return get_injected_roku_feed()
 
 
 @app.route('/live.m3u8')
@@ -66,3 +34,4 @@ def dash_live():
 
 if __name__ == '__main__':
     app.run()
+

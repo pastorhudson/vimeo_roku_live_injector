@@ -3,11 +3,8 @@ import os
 import requests
 from datetime import datetime, timedelta
 from pytz import timezone
-# from pytz.reference import Eastern
 from cloudflare import generate_cloudflare_roku_feed
 from pytz.reference import Eastern
-from xml.etree.ElementTree import Element, SubElement, Comment, tostring
-from xml.dom import minidom
 
 
 def get_cloudflare_url(url=None):
@@ -134,88 +131,13 @@ def get_offline_content():
     return "https://143vod-adaptive.akamaized.net/exp=1605126373~acl=%2Fea26be3b-4680-4ce4-b24b-d5df9cb78c7e%2F%2A~hmac=a1f84823cadb5590d868cf88ec4250e2bb8b88a841b2dff47c8a606c187e569d/ea26be3b-4680-4ce4-b24b-d5df9cb78c7e/video/f2940ff3/playlist.m3u8"
 
 
-def get_categories():
-    # Create the root element
-    root = Element('categories')
-
-    # Add XML declaration processing instruction
-
-    # Add banner_ad element with comment
-    banner_comment = Comment(' banner_ad: optional element which displays an at the top level category screen ')
-    root.append(banner_comment)
-
-    banner = SubElement(root, 'banner_ad')
-    banner.set('sd_img', 'https://devtools.web.roku.com/videoplayer/images/missing.png')
-    banner.set('hd_img', 'https://devtools.web.roku.com/videoplayer/images/missing.png')
-
-    # Technology category
-    tech = SubElement(root, 'category')
-    tech.set('title', 'Live')
-    tech.set('description', 'Live Service')
-    tech.set('sd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Technology.png')
-    tech.set('hd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Technology.png')
-
-    tech_mind = SubElement(tech, 'categoryLeaf')
-    tech_mind.set('title', 'Services')
-    tech_mind.set('description', '')
-    tech_mind.set('feed', 'https://roku.cbcfamily.church/feed.xml')
-
-    # tech_global = SubElement(tech, 'categoryLeaf')
-    # tech_global.set('title', 'Global Issues')
-    # tech_global.set('description', '')
-    # tech_global.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/globalissues.xml')
-    #
-    # # Entertainment category
-    # ent = SubElement(root, 'category')
-    # ent.set('title', 'Entertainment')
-    # ent.set('description', 'TED Talks on Entertainment')
-    # ent.set('sd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Entertainment.png')
-    # ent.set('hd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Entertainment.png')
-    #
-    # ent_music = SubElement(ent, 'categoryLeaf')
-    # ent_music.set('title', 'Music')
-    # ent_music.set('description', '')
-    # ent_music.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/music.xml')
-    #
-    # ent_insp = SubElement(ent, 'categoryLeaf')
-    # ent_insp.set('title', 'Inspiration')
-    # ent_insp.set('description', '')
-    # ent_insp.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/inspiration.xml')
-    #
-    # # Design category
-    # design = SubElement(root, 'category')
-    # design.set('title', 'Design')
-    # design.set('description', 'TED Talks on Design')
-    # design.set('sd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Design.png')
-    # design.set('hd_img', 'https://devtools.web.roku.com/videoplayer/images/TED_Design.png')
-    #
-    # design_create = SubElement(design, 'categoryLeaf')
-    # design_create.set('title', 'Creativity')
-    # design_create.set('description', '')
-    # design_create.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/creativity.xml')
-    #
-    # design_leaf = SubElement(design, 'categoryLeaf')
-    # design_leaf.set('title', 'Design')
-    # design_leaf.set('description', '')
-    # design_leaf.set('feed', 'https://devtools.web.roku.com/videoplayer/xml/design.xml')
-
-    # Convert to string with pretty printing
-    xml_str = minidom.parseString(tostring(root, encoding='unicode')).toprettyxml(indent='  ')
-
-    # Add XML declaration since toprettyxml() doesn't include it
-    if not xml_str.startswith('<?xml'):
-        xml_str = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n' + xml_str
-
-    return xml_str
-
-
 if __name__ == "__main__":
     # print(get_vimeo_roku_feed())
     # print(get_live_url('https://vimeo.com/494519730'))
     # offline_url = get_live_url(os.environ.get('OFFLINE_URL'))
     # print(offline_url)
     # print(get_live_url('https://vimeo.com/478184394'))
-    print(get_categories())
+    # print(get_categories())
 
     # print(get_injected_roku_feed())
     # https: // vimeo.com / 477782549
