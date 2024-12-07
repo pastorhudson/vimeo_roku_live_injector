@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calvary Baptist Church Streaming</title>
+  <!-- Tailwind CSS - CDN Link -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-gray-100">
+  <!-- Navigation -->
+  <header class="bg-gray-800 shadow">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-4">
+        <img src="https://cbcfamily.s3.us-east-1.amazonaws.com/images/logo40x40.png" alt="Church Logo" class="h-10 w-10 rounded-full"/>
+        <span class="text-xl font-bold text-gray-100">Calvary Baptist Church</span>
+      </div>
+      <nav class="hidden md:flex space-x-4">
+        <a href="https://cbcfamily.church" class="text-gray-200 hover:text-blue-400 transition">Home</a>
+        <a href="https://live.cbcfamily.church" class="text-gray-200 hover:text-blue-400 transition">Live</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section (optional, currently hidden) -->
+<!--
+  <section id="home" class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 py-16 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-100 mb-4">Welcome to Our Church</h1>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+        Experience our worship services and teachings wherever you are.
+      </p>
+      <a href="#channels" class="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-500 transition">
+        Explore Our Channels
+      </a>
+    </div>
+  </section>
+-->
+
+  <!-- Channels Section -->
+<section id="channels" class="py-16 bg-gray-900">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-100 text-center mb-10">Watch Us On Your TV</h2>
+    <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-8 text-center">
+      Enjoy livestreams, past services, and special events directly on your Roku device. Join us remotely when you're unable to be present.
+    </p>
+
+    <div class="grid gap-8 md:grid-cols-2">
+      <!-- Roku Channel Card -->
+      <div class="bg-gray-800 rounded-lg shadow-lg p-8 flex flex-col items-center text-center transition hover:shadow-2xl">
+        <!-- Adjusted width for uniformity -->
+        <img src="https://cbcfamily.s3.us-east-1.amazonaws.com/images/roku.svg" alt="Roku Channel" class="mb-6 h-50 w-auto rounded-md"/>
+        <h3 class="text-2xl font-bold text-gray-100 mb-4">Roku</h3>
+        <a href="https://my.roku.com/account/add/cbctest" target="_blank" class="inline-block px-6 py-3 bg-purple-600 text-white font-semibold rounded-md hover:bg-purple-500 transition cursor-not-allowed opacity-50 mb-4" disabled>
+          BETA Channel Coming Soon
+        </a>
+      </div>
+
+      <!-- Amazon Fire TV Channel Card -->
+      <div class="bg-gray-800 rounded-lg shadow-lg p-8 flex flex-col items-center text-center transition hover:shadow-2xl">
+        <!-- Adjusted width for uniformity -->
+        <img src="https://cbcfamily.s3.us-east-1.amazonaws.com/images/amazon_fire_tv.svg" alt="Amazon Fire TV" class="mb-6 h-50 w-auto rounded-md"/>
+        <h3 class="text-2xl font-bold text-gray-100 mb-4">Amazon Fire TV</h3>
+        <a href="#" target="_blank" class="inline-block px-6 py-3 bg-yellow-600 text-white font-semibold rounded-md cursor-not-allowed opacity-50 mb-4" disabled>
+          Coming Soon
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-400 py-6 mt-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p>&copy; <span id="year"></span> Calvary Baptist Church. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

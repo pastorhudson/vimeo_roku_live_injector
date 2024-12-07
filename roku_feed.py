@@ -1,4 +1,4 @@
-from flask import Flask, redirect
+from flask import Flask, redirect, render_template
 from get_url import get_injected_roku_feed, get_vimeo_live_url, get_offline_content
 from cloudflare import get_live_stream
 import dotenv
@@ -7,9 +7,14 @@ dotenv.load_dotenv(dotenv_path='secrets.env')
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/feed')
 def channel_feed():
     return get_injected_roku_feed()
+
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 
 @app.route('/live.m3u8')
