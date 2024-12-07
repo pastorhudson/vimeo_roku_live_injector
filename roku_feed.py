@@ -8,12 +8,12 @@ app = Flask(__name__)
 
 
 @app.route('/rokufeed')
-def channel_feed():
+def roku_feed():
     return get_injected_roku_feed()
 
 
 @app.route('/firetvfeed')
-def channel_feed():
+def amazonfire_feed():
     return get_injected_roku_feed()
 
 
