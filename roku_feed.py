@@ -14,9 +14,9 @@ def roku_feed():
     return get_injected_roku_feed()
 
 
-@app.route('/firetvfeed')
+@app.route('/reactfeed')
 def amazonfire_feed():
-    return get_injected_roku_feed()
+    return get_injected_roku_feed(hd=True)
 
 
 @app.route('/')

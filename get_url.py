@@ -55,7 +55,7 @@ def get_vimeo_roku_feed():
     return response.json()
 
 
-def get_injected_roku_feed():
+def get_injected_roku_feed(hd=False):
     # live_blob = get_live_url()
     cur_roku_feed = generate_cloudflare_roku_feed()
 

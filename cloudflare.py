@@ -90,7 +90,7 @@ def delete_all_videos():
             headers=headers)
 
 
-def parse_video(video):
+def parse_video(video, height='450'):
     eastern = ZoneInfo("America/New_York")
     stamp = datetime.fromisoformat(video['created'].split(".")[0]).replace(tzinfo=timezone.utc).astimezone(eastern)
     stamp = datetime.strftime(stamp, "%Y-%m-%dT%H:%M:%S%z")
@@ -98,7 +98,7 @@ def parse_video(video):
                     "id": video['uid'],
                     "title": video['meta']['name'],
                     "shortDescription": video['meta']['name'],
-                    "thumbnail": video['thumbnail'] + "?height=450",
+                    "thumbnail": video['thumbnail'] + f"?height={height}",
                     # "releaseDate": "2020-11-01T11:11:25-05:00",
                     "releaseDate": stamp,
 
@@ -125,7 +125,7 @@ def parse_video(video):
     return roku_data[0]
 
 
-def generate_cloudflare_roku_feed():
+def generate_cloudflare_roku_feed(hd=False):
     videos = get_all_videos()
     feed = {
         "providerName": "Calvary Baptist Church",
@@ -136,8 +136,10 @@ def generate_cloudflare_roku_feed():
     }
 
     for video in videos['result']['videos']:
-        print(video)
-        feed['movies'].append(parse_video(video))
+        if hd:
+            feed['movies'].append(parse_video(video, height='1080'))
+        else:
+            feed['movies'].append(parse_video(video))
 
     return feed
 
