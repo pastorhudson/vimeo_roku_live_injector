@@ -3,9 +3,11 @@ from get_url import get_injected_roku_feed, get_vimeo_live_url, get_offline_cont
 from cloudflare import get_live_stream
 import dotenv
 import os
+from flask_cors import CORS
 dotenv.load_dotenv(dotenv_path='secrets.env')
 app = Flask(__name__)
 
+CORS(app)
 
 @app.route('/rokufeed')
 def roku_feed():
