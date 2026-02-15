@@ -61,16 +61,21 @@ def get_live_stream(type):
 
 
 def get_all_videos():
-
     token = os.getenv('CLOUDFLARE_TOKEN')
     headers = {
         'Authorization': f"Bearer {token}",
         'Content-Type': 'application/json',
     }
 
-    response = requests.get(f'https://api.cloudflare.com/client/v4/accounts/{os.getenv("CLOUDFLARE_ACCOUNT")}/stream?include_counts=true', headers=headers)
+    response = requests.get(
+        f'https://api.cloudflare.com/client/v4/accounts/{os.getenv("CLOUDFLARE_ACCOUNT")}/stream?include_counts=true',
+        headers=headers
+    )
 
-    return response.json()
+    data = response.json()
+    if not data.get('success'):
+        raise Exception(f"Cloudflare API error: {data.get('errors', data)}")
+    return data
 
 
 def delete_all_videos():
@@ -135,7 +140,7 @@ def generate_cloudflare_roku_feed(hd=False):
         ]
     }
 
-    for video in videos['result']['videos']:
+    for video in videos.get('result', {}).get('videos', []):
         if hd:
             feed['movies'].append(parse_video(video, height='1080'))
         else:
