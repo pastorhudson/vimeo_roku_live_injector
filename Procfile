@@ -1,1 +1,1 @@
-web: gunicorn roku_feed:app --workers=3
+web: gunicorn roku_feed:app --workers ${WEB_CONCURRENCY:-3}
